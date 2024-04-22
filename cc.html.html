@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Customer Data</title>
+<style>
+          body {
+            background-color: white;
+            /* Light gray background */
+           
+            /* Background image */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            margin-top: 50px;
+            /* Add some top margin */
+            width: 100%;
+            /* Adjusted container width */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: rgba(0, 0, 255, 0.1);
+            /* Semi-transparent blue background */
+            border-radius: 20px;
+            /* Rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            /* Shadow */
+            padding: 30px;
+            /* Padding */
+            max-width: 600px;
+            /* Adjusted max-width */
+            width: 100%;
+            /* Full width */
+        }
+
+        
+.card {
+    background-color: rgba(0, 0, 255, 0.1);
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    max-width: 600px; /* Adjusted max-width */
+    width: 100%;
+}
+
+        .card-body {
+            padding: 0;
+            background-color: rgba(0, 0, 255, 0.1);
+            /* Semi-transparent blue background */
+            border-radius: 20px;
+            /* Rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            /* Shadow */
+            padding: 20px;
+            /* Padding */
+            max-width: 600px;
+            /* Adjusted max-width */
+            width: 100%;
+            /* Full width */
+        }
+
+        label {
+            font-weight: bold;
+            /* Make labels bold */
+        }
+
+        .form-control {
+            margin-bottom: 20px;
+        }
+
+        .btn-primary {
+            margin-top: 20px;
+            width: 100%;
+            background-color: #007bff;
+            border: none;
+            color: white;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        #alreadyRegisteredMessage {
+            margin-top: 20px;
+            /* Add some top margin to the already registered message */
+        }
+
+        img {
+            border-radius: 8px;
+            /* Add border radius to the image */
+        }
+
+        h1 {
+            color: black;
+            /* Change the color of the h1 element */
+            margin-bottom: 10px;
+            /* Add some bottom margin to the h1 element */
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: bold;
+            font-size: x-large;
+            left: 10px;
+            /* Distance from left */
+        }
+
+        #logo {
+            max-width: 70px;
+            max-height: 70px;
+            margin: 10px;
+            /* Adjust margin as needed */
+            position: absolute;
+            /* Position absolutely */
+            top: 10px;
+            /* Distance from top */
+       
+            /* Distance from left */
+            border-radius: 8px;
+            transform: scale(1.5);
+            /* Zoom in effect */
+        }
+
+        footer {
+            background-color: grey;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        header {
+    text-align: center; /* Center the content horizontally */
+    margin-bottom: 20px;
+    position: absolute;
+    top: 10px;
+    left: 0; /* Align the header to the center */
+    right: 0; /* Align the header to the center */
+}
+
+
+        header img {
+            width: 160px;
+            height: auto;
+            border-radius: 50%;
+        }
+</style>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <img src="https://play-lh.googleusercontent.com/ntR1nKoIVBsSt758Zd5XZ9A-GBs1n3iyyN7PikoKRq2lsOFDIWhD3HcQdMMmmc-1bQ=h500" alt="Company Logo">
+    </header>
+<div class="container text-center">
+    <br>
+  
+    <br>
+    <div class="card mx-auto" style="width: 18rem;">
+        <div class="card-body">
+            <form name="submit-to-google-sheet">
+                <div class="mb-3">
+                    <label for="displayCompanyName">Company Name</label>
+                    <input id="companyname" name="companyname" type="text" class="form-control" placeholder="Company Name" required>
+                </div>
+                <div class="mb-3">
+                    <label for="displayCompanyName">Email</label>
+                    <input name="email" type="email" class="form-control" placeholder="Email" required>
+                </div>
+                <div class="mb-3">
+                    <label for="displayCompanyName">Demo Start Date</label>
+                    <input name="demo start date" type="date" class="form-control" placeholder="enter demo start date" required>
+                </div>
+                <div class="mb-3">
+                    <label for="displayCompanyName">Demo End Date</label>
+                    <input name="demo end date" type="date" class="form-control" placeholder="enter demo end date" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+    <br>
+     <!-- Buttons form -->
+     <div class="row justify-content-end">
+        <form class="col-auto">
+            <button class="btn btn-secondary mb-3" id="show-existing-btn">Click Here to View Existing Companies </button>
+            <div class="dropdown mb-3">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="existing-dropdown-btn" data-bs-toggle="dropdown" aria-expanded="false">
+                    Select Company
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="existing-dropdown-btn" id="existing-dropdown-menu">
+                    <!-- Existing company names will be dynamically added here -->
+                </ul>
+            </div>
+        </form>
+    </div>
+<!-- Button to redirect to next page -->
+<button class="btn btn-success" onclick="redirectToNextPage()" style="position: fixed; bottom: 20px; left: 20px;">Back</button>
+</div>
+<!-- Add the button inside your form -->
+<button type="button" class="btn btn-danger" onclick="deleteCustomer()">Delete this customer</button>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.forms['submit-to-google-sheet'];
+        const companyNameInput = document.getElementById('companyname');
+        let existingCompanyNames = JSON.parse(localStorage.getItem('existingCompanyNames')) || [];
+    
+        // Call updateDropdownMenu() when the page loads to populate the dropdown menu
+        updateDropdownMenu();
+    
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const companyName = companyNameInput.value.trim();
+            const email = form.email.value.trim();
+            const demoStartDate = form['demo start date'].value;
+            const demoEndDate = form['demo end date'].value;
+    
+            // Check if the company name and email combination already exist
+            const customerProfiles = JSON.parse(localStorage.getItem('customerProfiles')) || [];
+            const existingProfileIndex = customerProfiles.findIndex(profile =>
+                profile.companyname === companyName && profile.email === email
+            );
+    
+            if (existingProfileIndex !== -1) {
+                // If the entry already exists, show an alert and return without registering
+                alert('Company already registered with this email. Please use a different email or contact support.');
+                return;
+            }
+    
+            // Proceed with the registration process as before
+            // Add the new entry to localStorage
+            const customerProfile = {
+                companyname: companyName,
+                email: email,
+                demoStartDate: demoStartDate,
+                demoEndDate: demoEndDate
+            };
+            customerProfiles.push(customerProfile);
+            localStorage.setItem('customerProfiles', JSON.stringify(customerProfiles));
+    
+            // Add the company name to existingCompanyNames
+            existingCompanyNames.push(companyName);
+            localStorage.setItem('existingCompanyNames', JSON.stringify(existingCompanyNames));
+    
+            // Update dropdown menu after adding a new company
+            updateDropdownMenu();
+    
+            form.reset();
+            alert('Customer registered successfully!');
+        });
+    
+        function updateDropdownMenu() {
+            const dropdownMenu = document.getElementById('existing-dropdown-menu');
+            dropdownMenu.innerHTML = '';
+    
+            existingCompanyNames.forEach(company => {
+                const listItem = document.createElement('li');
+                const link = document.createElement('a');
+                link.classList.add('dropdown-item');
+                link.href = '#';
+                link.innerText = company;
+                link.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    event.stopPropagation(); // Prevent the dropdown from closing when clicking the delete option
+                    deleteCompany(company);
+                });
+                listItem.appendChild(link);
+                dropdownMenu.appendChild(listItem);
+            });
+    
+            if (existingCompanyNames.length === 0) {
+                const listItem = document.createElement('li');
+                listItem.classList.add('dropdown-item');
+                listItem.innerText = 'No existing companies';
+                dropdownMenu.appendChild(listItem);
+            }
+        }
+    
+        function deleteCompany(company) {
+            const confirmDelete = confirm(`Are you sure you want to delete ${company}?`);
+            if (confirmDelete) {
+                const customerProfiles = JSON.parse(localStorage.getItem('customerProfiles')) || [];
+                const updatedProfiles = customerProfiles.filter(profile => profile.companyname !== company);
+                localStorage.setItem('customerProfiles', JSON.stringify(updatedProfiles));
+    
+                existingCompanyNames = existingCompanyNames.filter(name => name !== company);
+                localStorage.setItem('existingCompanyNames', JSON.stringify(existingCompanyNames));
+    
+                updateDropdownMenu();
+                alert('Company deleted successfully.');
+            }
+        }
+    });
+    
+    function redirectToNextPage() {
+        window.location.href = 'OPTIONSforadminportal.html';
+    }
+    </script>
+    <script>
+    const demoStartDateInput = document.querySelector('input[name="demo start date"]');
+    const today = new Date().toISOString().split('T')[0];
+    demoStartDateInput.min = today;
+
+    const demoEndDateInput = document.querySelector('input[name="demo end date"]');
+    demoEndDateInput.min = today;
+
+    function deleteCustomer() {
+    const companyName = document.getElementById('companyname').value.trim();
+    const email = document.forms['submit-to-google-sheet'].email.value.trim();
+
+    if (!companyName || !email) {
+        alert('Please enter both company name and email to delete the customer.');
+        return;
+    }
+
+    const customerProfiles = JSON.parse(localStorage.getItem('customerProfiles')) || [];
+    const index = customerProfiles.findIndex(profile => profile.companyname === companyName && profile.email === email);
+
+    if (index !== -1) {
+        customerProfiles.splice(index, 1);
+        localStorage.setItem('customerProfiles', JSON.stringify(customerProfiles));
+        alert('Customer deleted successfully.');
+        // Redirect to Delete Customer page
+        window.location.href = 'delwhatcreated.html';
+    } else {
+        alert('Customer not found.');
+    }
+}
+
+</script>
+<script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwr91jUU0Yh9FyAKb6tsC1WyuU546gFQYKenkqbO5oJaO4GTCtygtT4PTwelyYcbvYf/exec'
+    const form = document.forms['submit-to-google-sheet']
+    form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+    .then(response => console.log('Success!', response))
+    .catch(error => console.error('Error!', error.message))
+    })
+</script>
+</body>
+</html>
